@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/PinewoodApp.CustomerAPI.Tests/bin/Debug/net8.0
+/PinewoodApp.CustomerAPI.Tests/obj/Debug/net8.0
+/PinewoodApp.CustomerAPI.Tests/obj
+/PinewoodApp.CustomerDMS/.vs/PinewoodApp.CustomerDMS/FileContentIndex
+/PinewoodApp.CustomerAPI/obj/Debug/net8.0
