@@ -28,7 +28,6 @@ namespace PinewoodApp.CustomerAPI.Handlers
             customerDetails.Phone = command.Phone;
             customerDetails.PostalCode = command.PostalCode;
             customerDetails.City = command.City;
-            customerDetails.Address = command.Address;
             
 
             return await _customerRepository.UpdateCustomerAsync(customerDetails);

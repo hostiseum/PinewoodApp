@@ -37,3 +37,4 @@ C:\projects\PinewoodTech\PinewoodApp.CustomerAPI\obj\Debug\net8.0\PinewoodApp.Cu
 C:\projects\PinewoodTech\PinewoodApp.CustomerAPI\obj\Debug\net8.0\ref\PinewoodApp.CustomerAPI.dll
 C:\projects\PinewoodTech\PinewoodApp.CustomerAPI\bin\Debug\net8.0\Data\seed.json
 C:\projects\PinewoodTech\PinewoodApp.CustomerAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\projects\PinewoodTech\PinewoodApp.CustomerAPI\obj\Debug\net8.0\PinewoodApp.CustomerAPI.sourcelink.json

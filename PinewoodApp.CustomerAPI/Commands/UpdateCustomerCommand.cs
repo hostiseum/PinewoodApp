@@ -18,7 +18,7 @@ namespace PinewoodApp.CustomerAPI.Commands
         public string Country { get; set; }
 
         public UpdateCustomerCommand(int id, string firstName, string lastName, string? email, 
-                                     string? phone, string? address, string? city, 
+                                     string? phone, string? city, 
                                      string postalCode, string country)
         {
             Id = id;    
@@ -26,7 +26,6 @@ namespace PinewoodApp.CustomerAPI.Commands
             LastName = lastName;
             Email = email;
             Phone = phone;
-            Address = address;
             City = city;
             PostalCode = postalCode;
             Country = country;

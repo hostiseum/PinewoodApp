@@ -223,3 +223,5 @@ C:\projects\PinewoodTech\PinewoodApp.CustomerDMS\bin\Debug\net8.0\runtimes\win\l
 C:\projects\PinewoodTech\PinewoodApp.CustomerDMS\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
 C:\projects\PinewoodTech\PinewoodApp.CustomerDMS\obj\Debug\net8.0\PinewoodApp.CustomerDMS.csproj.AssemblyReference.cache
 C:\projects\PinewoodTech\PinewoodApp.CustomerDMS\obj\Debug\net8.0\Pinewood.D3A87AF5.Up2Date
+C:\projects\PinewoodTech\PinewoodApp.CustomerDMS\obj\Debug\net8.0\PinewoodApp.CustomerDMS.sourcelink.json
+C:\projects\PinewoodTech\PinewoodApp.CustomerDMS\obj\Debug\net8.0\scopedcss\Areas\Customer\Shared\_Layout.cshtml.rz.scp.css

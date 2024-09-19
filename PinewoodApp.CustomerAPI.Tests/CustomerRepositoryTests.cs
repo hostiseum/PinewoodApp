@@ -12,6 +12,9 @@ using System.Numerics;
 
 namespace PinewoodApp.CustomerAPI.Tests
 {
+    /// <summary>
+    /// Sample Unit tests for Customer Repository
+    /// </summary>
     public class CustomerRepositoryTests
     {
         [Fact]

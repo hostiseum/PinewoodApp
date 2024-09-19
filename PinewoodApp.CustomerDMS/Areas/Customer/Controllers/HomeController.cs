@@ -25,6 +25,29 @@ namespace PinewoodApp.CustomerDMS.Areas.Customer.Controllers
             _httpHelper = httpHelper;
         }
 
+        public async Task<JsonResult> GetCustomers()
+        {
+            try
+            {
+                using var httpClient = _httpHelper.GetHttpClient();
+                HttpResponseMessage responseMessage = await httpClient.GetAsync("api/customer");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var customers = await responseMessage.Content.ReadFromJsonAsync<CustomerModel[]>();
+                    if (customers != null)
+                    {
+                        return new JsonResult(Ok(customers));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
+            return new JsonResult(StatusCode(500));
+        }
+
         // GET: CustomerController
         public ActionResult Index()
         {
@@ -49,7 +72,7 @@ namespace PinewoodApp.CustomerDMS.Areas.Customer.Controllers
         // POST: CustomerController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Index(Customer.Models.CustomerModel customer)
+        public async Task<ActionResult> Create(Customer.Models.CustomerModel customer)
         {
             try
             {
@@ -70,7 +93,7 @@ namespace PinewoodApp.CustomerDMS.Areas.Customer.Controllers
                 using HttpResponseMessage httpResponse =
                     await httpClient.PostAsync("/api/customer", json);
 
-                return Redirect("/");
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -111,7 +134,7 @@ namespace PinewoodApp.CustomerDMS.Areas.Customer.Controllers
                 using HttpResponseMessage httpResponse =
                     await httpClient.PutAsync("/api/customer", json);
 
-                return Redirect("/");
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -119,25 +142,17 @@ namespace PinewoodApp.CustomerDMS.Areas.Customer.Controllers
             }
         }
 
-        // GET: CustomerController/Delete/5
-        public ActionResult Delete(int id)
+        [HttpDelete]
+        public async Task<JsonResult> DeleteCustomer(int id)
         {
-            return View();
-        }
+            using var httpClient = _httpHelper.GetHttpClient();
+            HttpResponseMessage responseMessage = await httpClient.DeleteAsync($"api/customer/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return new JsonResult(Ok("Customer deleted successfully."));
+            }
 
-        // POST: CustomerController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return new JsonResult(BadRequest());
         }
     }
 }

@@ -26,6 +26,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\projects\PinewoodTech\PinewoodApp.CustomerDMS
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/projects/PinewoodTech/PinewoodApp.CustomerDMS/Areas/Customer/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/projects/PinewoodTech/PinewoodApp.CustomerDMS/Areas/Customer/Views/Home/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/projects/PinewoodTech/PinewoodApp.CustomerDMS/Areas/Customer/Views/Home/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -61,6 +69,10 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/projects/PinewoodTech/PinewoodApp.CustomerDMS/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/projects/PinewoodTech/PinewoodApp.CustomerDMS/Areas/Customer/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-4csz2zwz21
 
 [C:/projects/PinewoodTech/PinewoodApp.CustomerDMS/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s

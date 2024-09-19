@@ -51,7 +51,6 @@ namespace PinewoodApp.CustomerAPI.Controllers
                customer.LastName,
                customer.Email,
                customer.Phone,
-               customer.Address,
                customer.City,
                customer.PostalCode,
                customer.Country));
@@ -67,7 +66,6 @@ namespace PinewoodApp.CustomerAPI.Controllers
                customer.LastName,
                customer.Email,
                customer.Phone,
-               customer.Address,
                customer.City,
                customer.PostalCode,
                customer.Country));

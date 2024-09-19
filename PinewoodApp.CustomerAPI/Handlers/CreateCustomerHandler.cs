@@ -24,7 +24,6 @@ namespace PinewoodApp.CustomerAPI.Handlers
                 Phone = command.Phone,
                 PostalCode = command.PostalCode,
                 City = command.City,
-                Address = command.Address,
             };
 
             return await _customerRepository.AddCustomerAsync(customerDetails);

@@ -22,9 +22,9 @@ namespace PinewoodApp.CustomerDMS.Areas.Customer.Models
         public string? Email { get; set; } 
 
         public string? Phone { get; set; }
-        public string? Address { get; set; } 
+        
         public string? City { get; set; }    
-        public string? Region { get; set; } 
+      
         
         [DisplayName("Postal Code")]
         [Required(ErrorMessage = "Please enter Postal Code.")]

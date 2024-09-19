@@ -28,41 +28,41 @@ namespace PinewoodApp.CustomerDMS.Controllers
             return View();
         }
 
-        public async Task<JsonResult> GetCustomers()
-        {
-            try
-            {
-                using var httpClient = _httpHelper.GetHttpClient();
-                HttpResponseMessage responseMessage = await httpClient.GetAsync("api/customer");
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    var customers = await responseMessage.Content.ReadFromJsonAsync<CustomerModel[]>();
-                    if (customers != null)
-                    {
-                        return new JsonResult(Ok(customers));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-            }
+        //public async Task<JsonResult> GetCustomers()
+        //{
+        //    try
+        //    {
+        //        using var httpClient = _httpHelper.GetHttpClient();
+        //        HttpResponseMessage responseMessage = await httpClient.GetAsync("api/customer");
+        //        if (responseMessage.IsSuccessStatusCode)
+        //        {
+        //            var customers = await responseMessage.Content.ReadFromJsonAsync<CustomerModel[]>();
+        //            if (customers != null)
+        //            {
+        //                return new JsonResult(Ok(customers));
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex.Message);
+        //    }
 
-            return new JsonResult(StatusCode(500));
-        }
+        //    return new JsonResult(StatusCode(500));
+        //}
 
-        [HttpDelete]
-        public async Task<JsonResult> DeleteCustomer(int id)
-        {
-            using var httpClient = _httpHelper.GetHttpClient();
-            HttpResponseMessage responseMessage = await httpClient.DeleteAsync($"api/customer/{id}");
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return new JsonResult(Ok("Customer deleted successfully."));
-            }
+        //[HttpDelete]
+        //public async Task<JsonResult> DeleteCustomer(int id)
+        //{
+        //    using var httpClient = _httpHelper.GetHttpClient();
+        //    HttpResponseMessage responseMessage = await httpClient.DeleteAsync($"api/customer/{id}");
+        //    if (responseMessage.IsSuccessStatusCode)
+        //    {
+        //        return new JsonResult(Ok("Customer deleted successfully."));
+        //    }
 
-            return new JsonResult(BadRequest());
-        }
+        //    return new JsonResult(BadRequest());
+        //}
 
         public IActionResult Privacy()
         {

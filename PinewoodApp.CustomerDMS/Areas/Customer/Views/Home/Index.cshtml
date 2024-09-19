@@ -1,68 +1,108 @@
-﻿@model PinewoodApp.CustomerDMS.Areas.Customer.Models.CustomerModel
-@{
+﻿@{
     Layout = "_Layout";
-    ViewData["Title"] = "Customer";
+    ViewData["Title"] = " Pinewood - Customer Portal";
 }
 
-<h1>@ViewData["Title"]</h1>
 
-<h4>Add Customer</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            @Html.AntiForgeryToken()
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label">@Html.LabelFor(m => m.FirstName)</label>
-                <p>@Html.TextBoxFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control" } })</p>
-                @Html.ValidationMessageFor(m => m.FirstName,null, new {@class = "text-danger"} )
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label">@Html.LabelFor(m => m.LastName)</label>
-                <p>@Html.TextBoxFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control" } })</p>
-                @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label">@Html.LabelFor(m => m.Email)</label>
-                <p>@Html.TextBoxFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })</p>
-                @Html.ValidationMessageFor(m => m.Email, null, new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label">@Html.LabelFor(m => m.Phone)</label>
-                <p>@Html.TextBoxFor(m => m.Phone, new { htmlAttributes = new { @class = "form-control" } })</p>
-                @Html.ValidationMessageFor(m => m.Phone, null, new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label">@Html.LabelFor(m => m.City)</label>
-                <p>@Html.TextBoxFor(m => m.City, new { htmlAttributes = new { @class = "form-control" } })</p>
-                @Html.ValidationMessageFor(m => m.City, null, new { @class = "text-danger" })
+<div class="d-flex flex-column rounded-2 align-items-center vh-100 gap-2">
+    <div class="d-flex flex-row  w-100 justify-content-center">
+        <p class="text-primary fw-bold">Customer Portal</p>
+    </div>
+    <div class="d-flex flex-row flex-grow-0 h-auto w-100">
+        <div class="d-flex flex-column w-50 justify-content-end">
+            <a asp-area="Customer" class="btn btn-primary w-50 align-self-center" href="@Url.Action("Create")">Add Customer</a>
+        </div>
 
-            </div>
-            <div class="form-group">
-                <label asp-for="PostalCode" class="control-label">@Html.LabelFor(m => m.PostalCode)</label>
-                <p>@Html.TextBoxFor(m => m.PostalCode, new { htmlAttributes = new { @class = "form-control" } })</p>
-                @Html.ValidationMessageFor(m => m.PostalCode, null, new { @class = "text-danger" })
+        <div class="d-flex flex-column flex-grow-1">
+            <button class="btn btn-danger w-50" id="button" title="Delete">Delete</button>
+        </div>
 
-            </div>
-            <div class="form-group">
-                <label asp-for="Country" class="control-label">@Html.LabelFor(m => m.Country)</label>
-                <p>@Html.TextBoxFor(m => m.Country, new { htmlAttributes = new { @class = "form-control" } })</p>
-                @Html.ValidationMessageFor(m => m.Country, null, new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary"/>
-            </div>
-        </form>
+    </div>
+    <div class="d-flex flex-row flex-grow-0 w-100 justify-content-around">
+        <div class="d-flex flex-row flex-grow-0 w-100 justify-content-center">
+            <table class="table table-striped text-black w-100" id="customers">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>City</th>
+                        <th>PostalCode</th>
+                        <th>Country</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 </div>
+@section Scripts{
+<script>
+    $(document).ready(() => { 
+       
+        var table;    
+        $.ajax({
+            url: '@Url.Action("GetCustomers")',
+            dataType: 'json',
+            type: 'GET',
+            success: function(result){
+                     console.log(result.value);
+                     table = $('#customers').DataTable({
+                        responsive: true,
+                        data:result.value,
+                        columns: [{ data: 'id' }, { data: 'firstName' },
+                            { data: 'lastName' }, { data: 'email' }, { data: 'phone' }, 
+                            { data: 'city' }, { data: 'postalCode' }, {data:'country'},
+                            {
+                              data: 'Id',
+                              render: function (data, type, row, meta) {
+                                return `<a href='/Customer/Home/Details/${row.id}'>View</a> | <a href='/Customer/Home/Edit/${row.id}'>Edit</a>`;
+                              }
+                            }],
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+                    });
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+                    table.on('click', 'tbody tr', (e) => {
+                        let classList = e.currentTarget.classList;
+
+                        if (classList.contains('selected')) {
+                            classList.remove('selected');
+                        }
+                        else {
+                            table.rows('.selected').nodes().each((row) => row.classList.remove('selected'));
+                            classList.add('selected');
+                        }
+                    });
+
+            },
+            error:function(req, status, error){
+                console.log(status);
+            }
+
+        })
+
+        document.querySelector('#button').addEventListener('click', function () {
+            let row = table.row('.selected');
+            console.log(row.data().id);
+            $.ajax({
+                url: '@Url.Action("DeleteCustomer")',
+                dataType: 'json',
+                type: 'DELETE',
+                data:{id: row.data().id},
+                success: function (result) {
+                    console.log(result.value);
+                },
+                error: function(req, status, error){
+                        console.log(status);
+                }
+            });
+
+            table.row('.selected').remove().draw(false);
+        });
+
+
+    });
+</script>
 }
